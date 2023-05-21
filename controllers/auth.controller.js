@@ -5,17 +5,18 @@ function getSignup(req, res)
     res.render('customer/auth/signup');
 }
 
-async function signup(req, res) {
+ function signup(req, res) {
+    console.log(req.body);
     const user = new User(
         req.body.email,
         req.body.password,
-        req.body.fullname,
+        req.body.fullName,
         req.body.street,
-        req.body.postal,
+        req.body.postalCode,
         req.body.city
     );
 
-    await user.signup();
+     user.signup();
 
     res.redirect('/login');
 }

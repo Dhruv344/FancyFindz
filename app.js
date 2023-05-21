@@ -7,13 +7,13 @@ const authRoutes = require('./routes/auth.routes')
 
 const app = express();
 
-app.use(authRoutes);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: false }));
+app.use(authRoutes);
 
 db.connectToDatabase()
 .then( function() 
