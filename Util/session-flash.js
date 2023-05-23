@@ -9,7 +9,7 @@ function getSessionData(req)
 
 function flashDataToSession(req, data, action) 
 {
-    console.log(req.session)
+    // console.log(req.session)
     req.session.flashedData = data;
     req.session.save(action);
 }

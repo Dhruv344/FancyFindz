@@ -6,18 +6,18 @@ function isEmpty(value)
 function userCredentialsAreValid(email, password)
 {
     return (
-        email && email.includes('@') && password && password.trim() >= 6
+        email && email.includes('@') && password && password.trim().length >= 6
     );
 }
 
-function userDetailsAreValid(email, password, fullName, street, postalCode, city)
+function userDetailsAreValid(email, password, fullname, street, postal, city)
 {
     return (
         userCredentialsAreValid(email, password) && 
-        !isEmpty(fullName) && 
+        !isEmpty(fullname) && 
         !isEmpty(street) &&
         !isEmpty(city) &&
-        !isEmpty(postalCode) 
+        !isEmpty(postal) 
     )
 }
 

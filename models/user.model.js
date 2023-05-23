@@ -3,14 +3,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../data/database');
 
 class User {
-    constructor(email, password, fullname, street, postalCode, city)
+    constructor(email, password, fullname, street, postal, city)
     {
         this.email = email;
         this.password = password;
         this.fullname = fullname;
         this.address = {
             street: street,
-            postalCode: postalCode,
+            postal: postal,
             city: city
         };
     }
@@ -41,7 +41,7 @@ class User {
         await db.getDb().collection('users').insertOne({
             email: this.email,
             password: hashedPassword,
-            name: this.fullName,
+            name: this.fullname,
             address: this.address
         });
     }

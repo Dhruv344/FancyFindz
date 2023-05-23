@@ -13,9 +13,9 @@ function getSignup(req, res)
             email: '',
             confirmEmail: '',
             password: '',
-            fullName: '',
+            fullname: '',
             street: '',
-            postalCode: '',
+            postal: '',
             city: ''
         };
     }
@@ -23,26 +23,25 @@ function getSignup(req, res)
 }
 
  async function signup(req, res, next) {
-    // console.log(req.body);
     const enteredData = {
         email: req.body.email,
         confirmEmail: req.body['confirmEmail'],
         password: req.body.password,
-        fullName: req.body.fullName,
+        fullname: req.body.fullname,
         street: req.body.street,
-        postalCode: req.body.postalCode,
+        postal: req.body.postal,
         city: req.body.city
     }
 
     if(
-        !validation.userDetailsAreValid(
+        !(validation.userDetailsAreValid(
         req.body.email,
         req.body.password,
-        req.body.fullName,
+        req.body.fullname,
         req.body.street,
-        req.body.postalCode,
+        req.body.postal,
         req.body.city
-    ) || !validation.emailIsConfirmed(req.body.email, req.body['confirmEmail'])
+    )) || !validation.emailIsConfirmed(req.body.email, req.body['confirmEmail'])
     ) {
         sessionFlash.flashDataToSession(req, 
         {
@@ -58,9 +57,9 @@ function getSignup(req, res)
     const user = new User(
         req.body.email,
         req.body.password,
-        req.body.fullName,
+        req.body.fullname,
         req.body.street,
-        req.body.postalCode,
+        req.body.postal,
         req.body.city
     );
     
