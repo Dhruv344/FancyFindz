@@ -48,6 +48,7 @@ async function updateCartItem(event)
 
     cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);
 
+    
     for(const cartBadgeElement of cartBadgeElements)
     {
         cartBadgeElement.textContent = responseData.updatedCartData.newTotalQuantity;

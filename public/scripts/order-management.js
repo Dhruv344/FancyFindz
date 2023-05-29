@@ -10,6 +10,7 @@ async function updateOrder(event)
     const orderId = formData.get('orderid');
     const csrfToken = formData.get('_csrf');
   
+    console.log(formData, newStatus);
     let response;
   
     try {
@@ -36,10 +37,12 @@ async function updateOrder(event)
     }
   
     const responseData = await response.json();
+    console.log(responseData.newStatus);
   
     form.parentElement.parentElement.querySelector('.badge').textContent = responseData.newStatus.toUpperCase();
 }
   
+console.log('updateOrderFormElements', updateOrderFormElements)
 for (const updateOrderFormElement of updateOrderFormElements)
 {
     updateOrderFormElement.addEventListener('submit', updateOrder);
