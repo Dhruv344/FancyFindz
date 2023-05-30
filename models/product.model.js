@@ -10,7 +10,7 @@ class Product
         this.summary = productData.summary;
         this.price = +productData.price;
         this.description = productData.description;
-        this.image = productData.image;  // name of image fiel
+        this.image = productData.image;  // name of image file
         this.updateImageData();
         if(productData._id)
         {

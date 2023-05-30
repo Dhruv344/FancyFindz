@@ -4,7 +4,7 @@ function createUserSession(req, user, action) {
     req.session.save(action);
 }
 
-function destroyUserAuthSession(req) {
+function destroyUserAuthSession(req, res) {
     req.session.uid = null;
 }
 
