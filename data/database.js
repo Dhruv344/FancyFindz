@@ -1,12 +1,20 @@
 const mongodb = require('mongodb');
+const uri = "mongodb+srv://dhruvjain657:0mEYWs2iuxrSCpim@cluster0.bfryinm.mongodb.net/test2?retryWrites=true&w=majority";
 
 const MongoClient = mongodb.MongoClient;
 
 let database;
 
 async function connectToDatabase() {
-    const client = await MongoClient.connect('mongodb://127.0.0.1/testdb');
-    database = client.db('online-shop');
+
+    try{
+        const client = await MongoClient.connect(uri);
+        database = await client.db('online-shop').command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
 function getDb() {

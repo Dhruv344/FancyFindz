@@ -53,10 +53,14 @@ app.use(notFoundHandler);
 
 app.use(errorHandlerMiddleware);
 
+const PORT = 3000;
+
 db.connectToDatabase()
 .then( function() 
 {
-    app.listen(3000);
+    app.listen(PORT, () =>{
+        console.log(`listening on port ${PORT}`);
+    });
 })
 .catch( function(error) 
 {
